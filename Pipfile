@@ -8,7 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 psycopg2 = "*"
-django-debug-toolbar = "*"
+requests = "*"
+unicodedata = "*"
 
 [requires]
 python_version = "3.7"

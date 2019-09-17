@@ -1,0 +1,12 @@
+<h1>{{detail_product.nom}}</h1>
+
+<p>{{detail_product.categorie}}</p>
+<p>{{detail_product.description}}</p>
+<p>{{detail_product.indice}}</p>
+<p>{{detail_product.date_update}}</p>
+<p>{{detail_product.url}}</p>
+<p>
+    ingredient: {% for ing in ingredient %}
+                {{ing}}, 
+                {% endfor %}
+</p>
