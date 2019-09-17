@@ -75,15 +75,18 @@ class Command(BaseCommand):
     def insert_data(self,recv):
         list_cat = self.formating_data(recv.pop(6))
         list_ing = self.formating_data(recv.pop(4))
-        produit=products(id=recv[0], categorie=recv[1], nom=recv[2], description=recv[3], indice=recv[4], date_update=recv[5], url=recv[6])
-        produit.save()
+        if products.objects.filter(id=recv[0]).exists():
+            print("le produit existe déjà")
+        else:
+            produit=products(id=recv[0], categorie=recv[1], nom=recv[2], description=recv[3], indice=recv[4], date_update=recv[5], url=recv[6])
+            produit.save()
         for cat in list_cat:
             if categories.objects.filter(name=cat).exists():
                 categorie = categories.objects.get(name=cat)
                 try:
                     categorie.product.add(produit)
                 except:
-                    print("une reation existe déjà")
+                    print("une relation existe déjà")
             else:
                 categorie = categories(name=cat)
                 categorie.save()
@@ -95,7 +98,7 @@ class Command(BaseCommand):
                 try:
                     ingredient.product.add(produit)
                 except:
-                    print("une reation existe déjà")
+                    print("une relation existe déjà")
             else:
                 ingredient = ingredients(name=ing)
                 ingredient.save()
