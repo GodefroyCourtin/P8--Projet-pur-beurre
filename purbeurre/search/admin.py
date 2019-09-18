@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import products, categories, ingredients, product_save
-admin.site.register(products)
-admin.site.register(categories)
-admin.site.register(ingredients)
-admin.site.register(product_save)
+from .models import Product, Main_categorie, Sub_categorie, Ingredient
+admin.site.register(Product)
+admin.site.register(Main_categorie)
+admin.site.register(Sub_categorie)
+admin.site.register(Ingredient)

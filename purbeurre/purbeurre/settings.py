@@ -123,3 +123,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MAIN_CATEGORIE = [
+                "boissons",
+                "fruits-et-produits-derives",
+                "legumes-et-derives",
+                "viandes",
+                "poissons",
+                "sauces",
+                "produits-laitiers"
+                ]
