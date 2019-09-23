@@ -8,7 +8,7 @@ class Command(BaseCommand):
     def read_values_op_fo_fa(self):
         """Read the API data."""
         for cat in settings.MAIN_CATEGORIE:
-            categorie = Main_categorie.objects.update_or_create(
+            main_categorie = Main_categorie.objects.update_or_create(
                     name=cat
                 )
             params_get = {
@@ -17,16 +17,16 @@ class Command(BaseCommand):
                         "tag_contains_0": "contains",
                         "page_size": "1000",
                         "json": "1",
-                        "tag_0":categorie[0]
+                        "tag_0":main_categorie[0]
                     }
             read = requests.get(
                             'https://world.openfoodfacts.org/cgi/search.pl',
                             params=params_get
                             )
             raw_data = read.json()
-            self.data_sorting(raw_data, categorie[0])
+            self.data_sorting(raw_data, main_categorie[0])
 
-    def data_sorting(self, raw_data, categorie):
+    def data_sorting(self, raw_data, main_categorie):
         columns = ("id",
                    "product_name_fr",
                    "generic_name_fr",
@@ -45,7 +45,7 @@ class Command(BaseCommand):
                         break
                     else:
                         product_data.append(data.get(num_col))
-            product_data.insert(1, categorie)
+            product_data.insert(1, main_categorie)
             if not_ok is False and len(product_data) == 9:
                 product_data[7] = product_data[7][0]
                 self.insert_data(product_data)

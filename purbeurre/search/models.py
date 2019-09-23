@@ -9,7 +9,7 @@ class Main_categorie(models.Model):
 
 class Product(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    categorie = models.ForeignKey(Main_categorie, on_delete=models.CASCADE)
+    main_categorie = models.ForeignKey(Main_categorie, on_delete=models.CASCADE)
     nom = models.CharField(max_length=200)
     description = models.TextField()
     indice = models.CharField(max_length=10)
