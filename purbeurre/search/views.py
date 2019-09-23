@@ -19,6 +19,7 @@ def result(request):
 
 def detail(request, product_id):
     detail_product = get_object_or_404(Product, id=product_id)
+    info_prod = {
         'detail_product': detail_product,
         'ingredient': Ingredient.objects.filter(product=product_id)
     }
