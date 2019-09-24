@@ -1,0 +1,11 @@
+<h1>Création de compte</h1>
+{% if form %}
+<form action="{% url 'account:sign_up'%}" method="post">
+    {% csrf_token %}
+    <p>{{form}}</p>
+
+    <input type="submit" value="inscription">
+</form>
+{% else %}
+   <p>Salut {{username}}, ton compte a été creér, tu peux maintenant te connecter</p>
+{% endif %}

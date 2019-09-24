@@ -79,7 +79,7 @@ class Command(BaseCommand):
             #ici on creer le produit car l'id n'existe pas
             produit=Product(
                 id=receiv_data[0],
-                categorie=receiv_data[1],
+                main_categorie=receiv_data[1],
                 nom=receiv_data[2],
                 description=receiv_data[3],
                 indice=receiv_data[4],
