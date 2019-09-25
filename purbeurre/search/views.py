@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404,render
 
 from .models import Product, Main_categorie, Sub_categorie, Ingredient
 from .forms import search
-from .compare import compare
 
 def index(request):
     return render(request, 'search/index.html', {'form': search()})
@@ -27,12 +26,5 @@ def detail(request, product_id):
 
 def substitute(request, product_id):
     detail_product = get_object_or_404(Product, id=product_id)
-    search_substitute = compare(detail_product)
-    result ={
-        "products" :[]
-    }
-
-    for index, id_product in enumerate(search_substitute.dict_compare):
-        if int(id_product[0]) != product_id:
-            result["products"].append(Product.objects.filter(id=id_product[0]))
-    return render(request, 'search/substitute.html',result)
+    result_search_compare =detail_product.compare_search()
+    return render(request, 'search/substitute.html',result_search_compare)
