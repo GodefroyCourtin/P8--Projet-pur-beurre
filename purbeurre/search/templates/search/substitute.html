@@ -1,4 +1,4 @@
-{% for pro in products %}
+{% for pro in result_products %}
     {% for column in pro %}
         <p>{{ column.id}} </br>
         {{ column.nom}}</br>
@@ -6,6 +6,8 @@
         {{ column.indice}}</br>
         {{ column.date_update}}</br>
         <a href={{ column.url}}>{{ column.url}}</a></p>
+        <a href="{% url 'search:save' id_primary_product column.id %}">save</a>
         </br>
     {% endfor %}
 {% endfor %}
+<p>{{id_primary_product}}</p>

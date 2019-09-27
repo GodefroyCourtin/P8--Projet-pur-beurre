@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
 ]
-AUTH_USER_MODEL = 'account.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,6 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
 MAIN_CATEGORIE = [
                 "boissons",
                 "fruits-et-produits-derives",
@@ -136,3 +138,7 @@ MAIN_CATEGORIE = [
                 "sauces",
                 "produits-laitiers"
                 ]
+
+AUTH_USER_MODEL = 'account.My_user'
+
+LOGIN_URL ='account:sign_up'

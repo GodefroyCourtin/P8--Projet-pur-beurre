@@ -27,7 +27,7 @@ class Product(models.Model):
         else:
             dict_compare = sorted(dict_compare.items(),key = lambda x : x[1], reverse=True)
 
-        return {"products" : [Product.objects.filter(id=id_product[0]) for id_product in dict_compare] }
+        return {"result_products" : [Product.objects.filter(id=id_product[0]) for id_product in dict_compare] }
     
     def ing(self, list_ingredient_product, dict_compare):
         for ing in list_ingredient_product:
@@ -70,7 +70,3 @@ class Ingredient(models.Model):
         ordering = ('name',)
     def __str__(self):
         return self.name
-
-# class product_save(models.Model):
-#     id_product = models.ManyToManyField(Product)
-#     id_save_product = models.ManyToManyField(Product, related_name="product_replace")

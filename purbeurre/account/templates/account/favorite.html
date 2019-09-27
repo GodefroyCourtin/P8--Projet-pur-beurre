@@ -1,0 +1,15 @@
+{% for line in products_list %}
+    <p>
+    {% for product in line %}
+    
+        {{product.id}}</br>
+        {{product.nom}}</br>
+        {{product.description}}</br>
+        {{product.indice}}</br>
+        {{product.date_update}}</br>
+        {{product.url}}</br>
+        {{product.ingredient}}</br>
+    {% endfor %}
+    <a href="{% url 'account:remove_favorite' line.0.id line.1.id %}">supprimer des favoris</a>
+    </p>
+{% endfor %}
