@@ -1,12 +1,28 @@
-<h1>Connexion</h1>
-{% if form %}
-<form action="{% url 'account:sign_in'%}" method="post">
-    {% csrf_token %}
-    <p>{{form}}</p>
+{% extends "search/base.html" %}
+{% block content %}
+<section class="page-section result">
+    <div class="container">
+        <div class="row text-center justify-content-center align-items-center">
+            <div class="col-auto rounded shadow bg-primary text-white" >
+                <h1>Connexion Utilisateur</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-auto mx-auto text-white">
+                <form class="text-white bg-moules p-3 rounded shadow" action="{% url 'account:sign_in'%}" method="post">
+                    {% csrf_token %}
+                    <table>{{ form.as_table }}</table>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary text-right">Connexion</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <input type="submit" value="connexion">
-</form>
-{% else %}
-    <p>Binvenue {{username}}, tu es maintenant connecter</p>
-    <a href="{% url 'account:sign_out'%}">deconnexion</a>
-{% endif %}
+{% endblock content %}

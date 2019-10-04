@@ -5,6 +5,7 @@ import sys
 
 
 def main():
+    """Allow you to run the various django commands."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'purbeurre.settings')
     try:
         from django.core.management import execute_from_command_line

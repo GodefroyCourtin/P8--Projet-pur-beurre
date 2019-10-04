@@ -1,11 +1,53 @@
-<h1>Création de compte</h1>
+{% extends "search/base.html" %}
+{% load static %}
+{% block content %}
+<section class="page-section result">
+    <div class="container">
+        <div class="row text-center justify-content-center align-items-center">
+            <div class="col-auto rounded shadow bg-primary text-white" >
+                <h1>Création de compte</h1>
+            </div>
+        </div>
+    </div>
+</section>
 {% if form %}
-<form action="{% url 'account:sign_up'%}" method="post">
-    {% csrf_token %}
-    <p>{{form}}</p>
-
-    <input type="submit" value="inscription">
-</form>
+<section class="page-section bg-primary p-4">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 text-white">
+                <h4><strong>Hey salut toi ! inscrit toi cela te permettra d'enregistrer 
+                les produits que tu as selectionner et leur substitu de meilleur qualité, c'est a toi de jouer</strong></h4>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section bg-primary p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form class="text-white bg-moules p-3 rounded shadow" action="{% url 'account:sign_up'%}" method="post">
+                    {% csrf_token %}
+                    <table>{{ form.as_table }}</table>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary text-right">inscription</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6" >
+                <img src="{% static 'search/img/remy_couteau.jpg' %}" class="rounded img-fluid shadow" alt="remy_couteau"/>
+            </div>
+        </div>
+    </div>
+</section>
 {% else %}
-   <p>Salut {{username}}, ton compte a été creér, tu peux maintenant te connecter</p>
+<section class="page-section bg-primary">
+    <div class="container">
+        <div class="row text-center justify-content-center align-items-center">
+            <div class="col-12">
+                <h4 class="text-white"><strong>Youpi {{username}}, ton compte a été creér, tu peux maintenant connecter </strong></h4>
+            </div>
+        </div>
+    </div>
+</section>
 {% endif %}
+{% endblock content %}

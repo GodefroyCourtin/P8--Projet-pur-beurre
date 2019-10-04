@@ -127,8 +127,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-
 MAIN_CATEGORIE = [
                 "boissons",
                 "fruits-et-produits-derives",
@@ -141,4 +139,4 @@ MAIN_CATEGORIE = [
 
 AUTH_USER_MODEL = 'account.My_user'
 
-LOGIN_URL ='account:sign_up'
+LOGIN_URL = 'account:sign_up'

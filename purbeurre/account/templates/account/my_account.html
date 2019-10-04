@@ -1,0 +1,41 @@
+{% extends "search/base.html" %}
+{% block content %}
+<section class="page-section result">
+    <div class="container">
+        <div class="row text-center justify-content-center align-items-center">
+            <div class="col-auto rounded shadow bg-primary text-white" >
+                <h1>{{user.first_name}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section bg-primary">
+    <div class="container shadow">
+        <div class="row justify-content-center align-items-center bg-moules rounded-top">
+            <div class="col-6 rounded-top-right text-white" >
+                <h3>Votre Adresse email:</h3> 
+            </div>
+            <div class="col-6 text-white" >
+                <h3>{{ user.email }}</h3> 
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center  bg-moules">
+            <div class="col-6  text-white" >
+                <h3>Votre Nom:</h3> 
+            </div>
+            <div class="col-6 text-white" >
+                <h3>{{ user.last_name }}</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center bg-moules rounded-bottom">
+            <div class="col-6 text-white" >
+                <h3>Votre Prenom:</h3> 
+            </div>
+            <div class="col-6 text-white" >
+                <h3>{{ user.first_name }}</h3> 
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
