@@ -13,6 +13,9 @@ requests = "*"
 flake8 = "*"
 pydocstyle = "*"
 coverage = "*"
+whitenoise = "*"
+dj-database-url = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
