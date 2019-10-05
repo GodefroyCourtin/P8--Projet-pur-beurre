@@ -25,12 +25,9 @@ class Command(BaseCommand):
                         "tag_contains_0": "contains",
                         "page_size": "1000",
                         "json": "1",
-                        "tag_0": main_categorie[0]
+                        "tag_0":main_categorie[0].name
                     }
-            read = requests.get(
-                            'https://world.openfoodfacts.org/cgi/search.pl',
-                            params=params_get
-                            )
+            read = requests.get('https://world.openfoodfacts.org/cgi/search.pl',params=params_get)
             raw_data = read.json()
             self.data_sorting(raw_data, main_categorie[0])
 
