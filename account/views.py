@@ -38,6 +38,12 @@ def sign_in(request):
             if user is not None:
                 login(request, user)
                 return redirect('/')
+            else:
+                return render(
+                    request,
+                    'account/signin.html',
+                    {'form': Signin()}
+                    )
     else:
         return render(request, 'account/signin.html', {'form': Signin()})
 
