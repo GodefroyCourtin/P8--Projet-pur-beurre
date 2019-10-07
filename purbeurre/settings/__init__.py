@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,17 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+DEBUG = True
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ij@g4qbxosi3^5r=(h_g^+0r56kmt8h=!iy=d$p=)azuhx!*-j'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
-    # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = 'ij@g4qbxosi3^5r=(h_g^+0r56kmt8h=!iy=d$p=)azuhx!*-j'
-
-ALLOWED_HOSTS = ['127.0.0.1', 'cyrilpurbeurre.herokuapp.com']
+ALLOWED_HOSTS = [127.0.0.1]
 
 
 # Application definition
@@ -57,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'purbeurre.urls'
@@ -87,9 +79,9 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cyril',
-        'USER': 'cyril',
-        'PASSWORD': 'cyril',
+        'NAME': 'NameDATABASE',
+        'USER': 'NameUser',
+        'PASSWORD': 'Password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -134,24 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if os.environ.get('ENV') == 'PRODUCTION':
-
-    # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MAIN_CATEGORIE = [
                 "boissons",
