@@ -133,9 +133,6 @@ MAIN_CATEGORIE = [
                 "fruits-et-produits-derives",
                 "legumes-et-derives",
                 "viandes",
-                "poissons",
-                "sauces",
-                "produits-laitiers"
                 ]
 
 AUTH_USER_MODEL = 'account.My_user'

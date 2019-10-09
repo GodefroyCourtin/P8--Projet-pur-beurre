@@ -4,7 +4,6 @@ from django.conf import settings
 from search.models import Product,\
     Main_categorie,\
     Sub_categorie,\
-    Ingredient,\
     Nutriment
 import requests
 import unicodedata
@@ -23,11 +22,12 @@ class Command(BaseCommand):
                         "action": "process",
                         "tagtype_0": "categories",
                         "tag_contains_0": "contains",
-                        "page_size": "1000",
+                        "page_size": "200",
                         "json": "1",
                         "tag_0":main_categorie[0].name
                     }
             read = requests.get('https://world.openfoodfacts.org/cgi/search.pl',params=params_get)
+            # https://world.openfoodfacts.org/cgi/search.pl?action=process&tagtype_0=categories&tag_contains_0=contains&page_size=10&json=1&tag_0=boissons
             raw_data = read.json()
             self.data_sorting(raw_data, main_categorie[0])
 
@@ -35,11 +35,8 @@ class Command(BaseCommand):
         """Allow sorting on the received data."""
         columns = ("id",
                    "product_name_fr",
-                   "generic_name_fr",
-                   "ingredients_text_with_allergens_fr",
                    "nutrition_grade_fr",
                    "categories",
-                   "last_edit_dates_tags",
                    "url",
                    "image_url",
                    "nutriments")
@@ -54,8 +51,7 @@ class Command(BaseCommand):
                     else:
                         product_data.append(data.get(num_col))
             product_data.insert(1, main_categorie)
-            if not_ok is False and len(product_data) == 11:
-                product_data[7] = product_data[7][0]
+            if not_ok is False and len(product_data) == 8:
                 self.insert_data(product_data)
 
     def formating_data(self, data):
@@ -91,9 +87,8 @@ class Command(BaseCommand):
 
     def insert_data(self, receiv_data):
         """Insert the data after sorting in the database."""
-        list_sub_cat = self.formating_data(receiv_data.pop(6))
-        list_ing = self.formating_data(receiv_data.pop(4))
-        sorting_nutriment = self.sorting_nutriment(receiv_data.pop(8))
+        list_sub_cat = self.formating_data(receiv_data.pop(4))
+        sorting_nutriment = self.sorting_nutriment(receiv_data.pop(6))
 
         if Product.objects.filter(id=receiv_data[0]).exists() is False:
             # ici on creer le produit car l'id n'existe pas
@@ -101,11 +96,9 @@ class Command(BaseCommand):
                 id=receiv_data[0],
                 main_categorie=receiv_data[1],
                 nom=receiv_data[2],
-                description=receiv_data[3],
-                indice=receiv_data[4],
-                date_update=receiv_data[5],
-                url=receiv_data[6],
-                url_img=receiv_data[7])
+                indice=receiv_data[3],
+                url=receiv_data[4],
+                url_img=receiv_data[5])
             produit.save()
         else:
             # ici on récupère le produit car il existe
@@ -127,16 +120,6 @@ class Command(BaseCommand):
               product__id=receiv_data[0]
               ).exists() is False:
                 sub_categorie[0].product.add(produit)
-
-        for ing in list_ing:
-            ingredient = Ingredient.objects.get_or_create(
-                name=ing
-            )
-            if Ingredient.objects.filter(
-              name=ing,
-              product__id=receiv_data[0]
-              ).exists() is False:
-                ingredient[0].product.add(produit)
 
     def handle(self, *args, **options):
         """Command that is run when running the database update."""

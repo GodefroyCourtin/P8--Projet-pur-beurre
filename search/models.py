@@ -16,9 +16,7 @@ class Product(models.Model):
         Main_categorie,
         on_delete=models.CASCADE)
     nom = models.CharField(max_length=200)
-    description = models.TextField()
     indice = models.CharField(max_length=10)
-    date_update = models.CharField(max_length=200)
     url = models.URLField(max_length=200)
     url_img = models.URLField(max_length=200)
 
@@ -27,11 +25,8 @@ class Product(models.Model):
         list_sub_cat_product = [
             str(i.id) for i in self.sub_categorie_set.all()
             ]
-        list_ingredient_product = [
-            str(i.id) for i in self.ingredient_set.all()
-            ]
+
         dict_compare = self.sub_cat(list_sub_cat_product)
-        dict_compare = self.ing(list_ingredient_product, dict_compare)
 
         if len(dict_compare) > 5:
             dict_compare = sorted(
@@ -49,25 +44,6 @@ class Product(models.Model):
                 id=id_product[0]) for id_product in dict_compare
             ]}
 
-    def ing(self, list_ingredient_product, dict_compare):
-        """Sort products that have the most ingredients in common."""
-        for ing in list_ingredient_product:
-            recuperate_prod = [
-                str(i.id) for i in Product.objects.filter(
-                    ingredient__id=ing
-                    ).filter(
-                        main_categorie_id=self.main_categorie_id
-                        ).filter(
-                            indice__lt=self.indice
-                            )]
-            for ingredient in recuperate_prod:
-                if ingredient in dict_compare:
-                    data = dict_compare[ingredient]
-                    data += 1
-                    dict_compare[ingredient] = data
-                elif ingredient not in dict_compare:
-                    dict_compare[ingredient] = 1
-        return dict_compare
 
     def sub_cat(self, list_sub_cat_product):
         """Allow sorting products that have the most subcategory in common."""
@@ -103,9 +79,3 @@ class Sub_categorie(models.Model):
     name = models.CharField(max_length=200)
     product = models.ManyToManyField(Product)
 
-
-class Ingredient(models.Model):
-    """Contain ingredient."""
-
-    name = models.CharField(max_length=200)
-    product = models.ManyToManyField(Product)

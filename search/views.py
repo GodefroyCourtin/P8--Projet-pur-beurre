@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 
-from .models import Product, Ingredient, Nutriment
+from .models import Product, Nutriment
 from account.models import My_user, Substitute
 from .forms import search
 
