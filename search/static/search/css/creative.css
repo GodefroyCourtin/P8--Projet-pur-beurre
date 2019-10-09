@@ -160,7 +160,7 @@ sup {
 }
 
 a {
-  color: #f4623a;
+  color: #345A61;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2256,15 +2256,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #E8A75D;
-  border-color: #E8A75D;
+  color: #86EBE6;
+  background-color: #345A61;
+  border-color: #345A61;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #C45525;
-  border-color: #C45525;
+  color: #345A61;
+  background-color: #86EBE6;
+  border-color: #86EBE6;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2290,9 +2290,9 @@ fieldset:disabled a.btn {
 }
 
 .btn-secondary {
-  color: #fff;
-  background-color: #DE9440;
-  border-color: #DE9440;
+  color: #345A61;
+  background-color:#86EBE6;
+  border-color: #86EBE6;
 }
 
 .btn-secondary:hover {
@@ -6213,11 +6213,16 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #DE9440 !important;
+  background-color: #345A61  !important;
 }
 
 .bg-moules {
   background-color: #345A61 !important;
+}
+
+.bg-bonbon {
+  background-color: #86EBE6 !important;
+  color: #345A61 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -9398,7 +9403,9 @@ a.text-success:hover, a.text-success:focus {
 .text-info {
   color: #17a2b8 !important;
 }
-
+.text-moule {
+  color: #345A61 !important;
+}
 a.text-info:hover, a.text-info:focus {
   color: #0f6674 !important;
 }
@@ -9603,14 +9610,14 @@ hr.light {
 }
 
 #mainNav .navbar-brand {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Scope One", sans-serif;
   font-weight: 700;
   color: #212529;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
   color: #6c757d;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Scope One", sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 0;

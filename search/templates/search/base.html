@@ -5,15 +5,15 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="Description" content="Pur beurre, Trouvez un produit de substitution pour ceux que vous consommez tous les jours.">
+  <meta name="author" content="Cyril simonin">
 
   <title>Pur Beurre</title>
   <link rel="icon" type="image/png" href="{% static 'search/img/fav_logo.png' %}" />
 
   <!-- Google Fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
 
 
   <!-- Theme CSS - Includes Bootstrap -->
@@ -36,7 +36,8 @@
             <li class="nav-item">
               <form class="nav-link" action="{% url 'search:result'%}" method="post">
                 {% csrf_token %}
-                <input type="text" name="search_prod" placeholder="Chercher" class="rounded" maxlength="100" required="" id="id_search_prod">
+
+                <input class="form-control" type="search" name="search_prod" placeholder="Chercher" maxlength="100" required="" id="id_search_prod">
                 <input type="submit" class="d-none">
               </form>
             </li>

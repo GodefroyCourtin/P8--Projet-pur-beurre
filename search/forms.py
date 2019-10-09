@@ -6,7 +6,7 @@ class search(forms.Form):
     """Contain the search form."""
 
     search_prod = forms.CharField(
-        label="",
+        label=" ",
         max_length=100,
         widget=forms.TextInput(
             attrs={

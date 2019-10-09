@@ -10,18 +10,18 @@
         </div>
     </section>
     {% if products_list %}
-    <section class="page-section bg-primary">
+    <section class="page-section bg-secondary">
         <div class="container">
             {% for line in products_list %}
-            <div class="row bg-moules rounded-top shadow">
-                <div class="col-auto mx-auto text-white">
+            <div class="row bg-bonbon rounded-top shadow">
+                <div class="col-auto mx-auto">
                     <h4>Produit original</h4>
                 </div>
-                <div class="col-auto mx-auto text-white">
+                <div class="col-auto mx-auto">
                     <h4>Produit de substitution</h4>
                 </div>
             </div>
-            <div class="row bg-secondary shadow justify-content-center">
+            <div class="row bg-primary shadow justify-content-center">
                 <div class="col-auto text-center">
                     <div class="card" style="width: 10rem;">
                         <img class="rounded card-img-top" style="width: 10rem;"src="{{ line.0.0.url_img }}" alt="image produit">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-auto text-white">
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-12">
                             <p class="text-white"><strong>Repères nutritionnels pour 100G</strong></p>
                         </div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-auto mx-auto">
+                <div class="col-auto text-white">
                     <div class="card mx-auto" style="width: 10rem;">
                         <img class="rounded card-img-top mx-auto" style="width: 10rem;"src="{{ line.1.0.url_img }}" alt="image produit">
                         <div class="card-body d-flex flex-column ">
@@ -67,7 +67,7 @@
                 <div class="col-auto text-white">
                     <div class="row">
                         <div class="col-12">
-                            <p class="text-white"><strong>Repères nutritionnels pour 100G</strong></p>
+                            <p class="text-white mt-5"><strong>Repères nutritionnels pour 100G</strong></p>
                         </div>
                     </div>
                     {% for nut in line.1.1 %}
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row bg-moules rounded-bottom shadow mb-5">
+            <div class="row bg-bonbon rounded-bottom shadow mb-5">
                 <div class="col-auto mx-auto">
                     <a href="{% url 'account:remove_favorite' line.0.0.id line.1.0.id %}">
                         <button type="button" class="btn btn-danger"><strong>supprimer des favoris</strong></button>
@@ -100,7 +100,7 @@
         </div>
     </section>
     {% else %}
-    <section class="page-section bg-primary">
+    <section class="page-section bg-secondary">
         <div class="container">
             <div class="row text-center justify-content-center align-items-center m-0">
                 <div class="col-6 rounded shadow text-white bg-moules p-5">
