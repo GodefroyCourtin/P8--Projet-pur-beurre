@@ -35,7 +35,6 @@ def detail(request, product_id):
     info_prod = {
         'detail_product': detail_product,
         'nutriment': Nutriment.objects.filter(product=product_id),
-        'ingredient': Ingredient.objects.filter(product=product_id),
         'substitute': substitute
     }
     return render(request, 'search/detail.html', info_prod)

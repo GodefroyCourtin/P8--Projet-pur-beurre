@@ -11,17 +11,17 @@
     </div>
 </section>
 {% if form %}
-<section class="page-section bg-primary p-4">
+<section class="page-section bg-secondary p-4">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 text-white">
-                <h4><strong>Hey salut toi ! inscrit toi cela te permettra d'enregistrer 
+                <h4 style="color:#345A61"><strong>Hey salut toi ! inscrit toi cela te permettra d'enregistrer 
                 les produits que tu as selectionner et leur substitu de meilleur qualité, c'est a toi de jouer</strong></h4>
             </div>
         </div>
     </div>
 </section>
-<section class="page-section bg-primary p-3">
+<section class="page-section bg-secondary p-3">
     <div class="container">
         <div class="row">
             <div class="col-6">
@@ -29,7 +29,7 @@
                     {% csrf_token %}
                     <table>{{ form.as_table }}</table>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary text-right">inscription</button>
+                        <button type="submit" class="btn btn-secondary text-right">inscription</button>
                     </div>
                 </form>
             </div>

@@ -36,8 +36,8 @@
             <li class="nav-item">
               <form class="nav-link" action="{% url 'search:result'%}" method="post">
                 {% csrf_token %}
-
-                <input class="form-control" type="search" name="search_prod" placeholder="Chercher" maxlength="100" required="" id="id_search_prod">
+                <label class="invisible" for="id_search_prod">recherche produit</label>
+                <input class="form-control" type="search" name="search_prod" placeholder="Chercher" maxlength="100" id="id_search_prod">
                 <input type="submit" class="d-none">
               </form>
             </li>
