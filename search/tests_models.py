@@ -2,8 +2,7 @@ from django.test import TestCase
 from .models import Main_categorie, \
     Product, \
     Nutriment, \
-    Sub_categorie, \
-    Ingredient
+    Sub_categorie
 
 
 class ProductTestCase(TestCase):
@@ -13,9 +12,7 @@ class ProductTestCase(TestCase):
                 id=5449000000996,
                 main_categorie=main_categorie,
                 nom="coca",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         self.produit1.save()
@@ -24,17 +21,11 @@ class ProductTestCase(TestCase):
                 id=5449000133335,
                 main_categorie=main_categorie,
                 nom="Coca Cola Zero",
-                description="une description",
                 indice="b",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         self.produit2.save()
 
-        name_ing = "un ingredient"
-        ing = Ingredient.objects.create(name=name_ing)
-        ing.product.add(self.produit1)
-        ing.product.add(self.produit2)
 
         name_subcat = "une subcat"
         subcat = Sub_categorie.objects.create(name=name_subcat)
@@ -47,17 +38,13 @@ class ProductTestCase(TestCase):
                 id=5449000000996,
                 main_categorie=main_categorie,
                 nom="coca",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         produit.save()
         self.assertEqual(produit.id, 5449000000996)
         self.assertEqual(produit.main_categorie, main_categorie)
-        self.assertEqual(produit.description, "une description")
         self.assertEqual(produit.indice, "e")
-        self.assertEqual(produit.date_update, "2019-10-12")
         self.assertEqual(produit.url, "http://url.fr/openfoodfact")
         self.assertEqual(produit.url_img, "http://url.fr/openfoodfact/image")
 
@@ -80,9 +67,7 @@ class NutrimentTestCase(TestCase):
                 id=5449000000996,
                 main_categorie=main_categorie,
                 nom="coca",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         self.produit.save()
@@ -109,9 +94,7 @@ class SubCatTestCase(TestCase):
                 id=5449000000996,
                 main_categorie=main_categorie,
                 nom="coca",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         self.produit.save()
@@ -123,26 +106,3 @@ class SubCatTestCase(TestCase):
         search = Sub_categorie.objects.get(name=name)
         self.assertEqual(subcat, search)
         self.assertEqual(search.name, "une subcat")
-
-
-class IngredientTestCase(TestCase):
-    def setUp(self):
-        main_categorie = Main_categorie.objects.create(name="boisson")
-        self.produit = Product(
-                id=5449000000996,
-                main_categorie=main_categorie,
-                nom="coca",
-                description="une description",
-                indice="e",
-                date_update="2019-10-12",
-                url="http://url.fr/openfoodfact",
-                url_img="http://url.fr/openfoodfact/image")
-        self.produit.save()
-
-    def test_create_ingredient(self):
-        name = "un ingredient"
-        ing = Ingredient.objects.create(name=name)
-        ing.product.add(self.produit)
-        search = Ingredient.objects.get(name=name)
-        self.assertEqual(ing, search)
-        self.assertEqual(search.name, "un ingredient")

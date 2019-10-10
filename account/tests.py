@@ -58,9 +58,7 @@ class favoritePageTestCase(TestCase):
                 id=5449000000996,
                 main_categorie=main_categorie,
                 nom="coca",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         produit1.save()
@@ -69,9 +67,7 @@ class favoritePageTestCase(TestCase):
                 id=5449000133335,
                 main_categorie=main_categorie,
                 nom="Coca Cola Zero",
-                description="une description",
                 indice="e",
-                date_update="2019-10-12",
                 url="http://url.fr/openfoodfact",
                 url_img="http://url.fr/openfoodfact/image")
         produit2.save()
