@@ -34,7 +34,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
             <li class="nav-item">
-              <form class="nav-link" action="{% url 'search:result'%}" method="post">
+              <form class="nav-link d-flex align-items-center" action="{% url 'search:result'%}" method="post">
                 {% csrf_token %}
                 <label class="invisible" for="id_search_prod">recherche produit</label>
                 <input class="form-control" type="search" name="search_prod" placeholder="Chercher" maxlength="100" id="id_search_prod">
@@ -42,20 +42,20 @@
               </form>
             </li>
           {% if user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <a class="nav-link js-scroll-trigger" href="{% url 'account:my_account'%}"><i class="fas fa-user"> Mon compte</i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <a class="nav-link js-scroll-trigger" href="{% url 'account:favorite'%}"><i class="fas fa-carrot"> Mes aliments</i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <a class="nav-link js-scroll-trigger" href="{% url 'account:sign_out'%}"><i class="fas fa-sign-out-alt"> Déconnexion</i></a>
           </li>
           {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:sign_up'%}"><i class="fas fa-user-plus"> M'inscrire</i></a>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link js-scroll-trigger" href="{% url 'account:sign_up'%}"><i class="fas fa-user-plus"> M'inscrire</i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <a class="nav-link js-scroll-trigger" href="{% url 'account:sign_in'%}"><i class="fas fa-sign-in-alt"> Connexion</i></a>
           </li>
           {% endif %}

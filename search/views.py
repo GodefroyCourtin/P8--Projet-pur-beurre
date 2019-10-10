@@ -18,7 +18,7 @@ def result(request):
         form = search(request.POST)
         if form.is_valid():
             name_prod = form.cleaned_data['search_prod']
-            search_prod = Product.objects.filter(nom__search=name_prod)
+            search_prod = Product.objects.filter(nom__search=name_prod).order_by('nom')
             context = {
                 'product_list': search_prod,
                 'search_prod': name_prod

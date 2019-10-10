@@ -16,8 +16,8 @@
             {% if product_list %}
                 {% for product in product_list %}
                     <div class="col-lg-4 col-sm-6 mb-2">
-                        <div class="card mx-auto h-100 w-100" style="width: 20rem;">
-                            <img class="rounded card-img-top mx-auto" style="width: 10rem;"src="{{ product.url_img }}" alt="image produit">
+                        <div class="card mx-auto h-100 w-100" >
+                            <img class="rounded center-cropped" src="{{ product.url_img }}" alt="image produit">
                             <div class="card-body d-flex flex-column ">
                                 <h5 class="card-title mt-auto">{{ product.nom }}</h5>
                                 <a href="{% url 'search:detail' product.id %}" class="btn btn-primary">Détail du produit</a>

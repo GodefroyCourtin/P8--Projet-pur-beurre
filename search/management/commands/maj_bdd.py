@@ -22,7 +22,7 @@ class Command(BaseCommand):
                         "action": "process",
                         "tagtype_0": "categories",
                         "tag_contains_0": "contains",
-                        "page_size": "200",
+                        "page_size": "100",
                         "json": "1",
                         "tag_0":main_categorie[0].name
                     }

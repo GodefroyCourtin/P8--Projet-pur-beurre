@@ -5,5 +5,4 @@ search/__pycache__/
 search/migrations/__pycache__/
 account/__pycache__/
 account/migrations/__pycache__/
-purbeurre/settings/production.py
-purbeurre/staticfiles/
+staticfiles/

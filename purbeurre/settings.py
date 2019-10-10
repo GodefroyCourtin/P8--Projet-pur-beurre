@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+if os.environ.get('ENV') == 'PRODUCTION':
+    import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,13 +20,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+if os.environ.get('ENV') == 'PRODUCTION':
+    # SECURITY WARNING: keep the secret key used in production secret!
+    DEBUG = False
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ.get('KEY')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = True
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ij@g4qbxosi3^5r=(h_g^+0r56kmt8h=!iy=d$p=)azuhx!*-j'
+    ALLOWED_HOSTS = ["purbeurrecyril.herokuapp.com"]
+else:
+    DEBUG = True
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'ijg4qbxosi3j'
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+    ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -50,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'purbeurre.urls'
@@ -79,9 +88,9 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cyril',
-        'USER': 'cyril',
-        'PASSWORD': 'cyril',
+        'NAME': 'namedb',
+        'USER': 'userDB',
+        'PASSWORD': 'Password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -138,3 +147,6 @@ MAIN_CATEGORIE = [
 AUTH_USER_MODEL = 'account.My_user'
 
 LOGIN_URL = 'account:sign_up'
+
+if os.environ.get('ENV') == 'PRODUCTION':
+    django_heroku.settings(locals())
